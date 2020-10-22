@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical">
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,6 +19,39 @@
         android:textStyle="bold"
         android:textAlignment="center"
         />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/name_field"
+        android:hint="Masukkan nama Anda"
+        android:inputType="textCapWords"
+        android:textSize="23sp"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"  />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TOPPING"
+        android:textSize="25sp"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"/>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Whipped Cream"
+        android:textSize="25sp"
+        android:paddingTop="16sp"
+        android:paddingLeft="16sp"
+        android:id="@+id/whipped_cream_checkbox" />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chocolate"
+        android:textSize="25sp"
+        android:paddingTop="16sp"
+        android:paddingLeft="16sp"
+        android:id="@+id/chocolate_checkbox" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -94,9 +129,11 @@
             android:layout_marginLeft="16dp"
             android:onClick="submitReset"/>
     </LinearLayout>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/kopi" />
 </LinearLayout>
+</ScrollView>

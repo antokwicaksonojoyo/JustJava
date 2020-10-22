@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -12,6 +14,8 @@ import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 int quantity = 0;
+EditText namaEditText;
+String nama;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,20 +28,42 @@ int quantity = 0;
     }
 
     public void decrement (View view) {
-        quantity = quantity - 1;
-
-        display(quantity);
+        if (quantity > 0){
+            quantity = quantity - 1;
+            display(quantity);
+        }
     }
 
     public void submitOrder (View view) {
-        int price = quantity * 5000;
-        String priceMessage = "Total Pembelian Rp. " + price;
-        priceMessage = priceMessage + "\nMatursalangkung!";
+        CheckBox whippedCreamCheckbox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
+        CheckBox chocolateCheckbox = (CheckBox) findViewById(R.id.chocolate_checkbox);
+        namaEditText = (EditText) findViewById(R.id.name_field);
+        boolean hashWhippedCream = whippedCreamCheckbox.isChecked();
+        boolean hashChocolate = chocolateCheckbox.isChecked();
+        nama = namaEditText.getText().toString();
+        int price = calculatePrice(hashWhippedCream, hashChocolate);
+        String priceMessage = "Jumlah pembelian " + quantity + " cangkir" +
+                "\nWhipped Cream : " + hashWhippedCream +
+                "\nChocolate : " + hashChocolate +
+                "\nTotal pembelian Rp " + price +
+                "\nMatursalangkung, " + nama;
         displayMessage (priceMessage);
     }
 
+    private int calculatePrice(boolean addhashWhippedCream, boolean addhashChocolate) {
+        int basePrice = 5000;
+        int price = 0;
+        if (addhashWhippedCream) {
+            basePrice = basePrice + 1000;
+        }
+        if(addhashChocolate){
+            basePrice = basePrice + 2000;
+        }
+        return price = quantity * basePrice;
+    }
+
     public void submitReset (View view) {
-        if (quantity == quantity){
+        if (quantity == quantity){                                                                                                                                        
             quantity = 0;
         };
         display(quantity);
